@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Handomo | Stop losing money to no shows, late payers and missed messages</title>
+<meta name="description" content="No shows, late payers and missed messages quietly cost your business money every week. Handomo runs the reminders, follow ups and chasing that bring it back. Every output reviewed by a person.">
+<style>
+  :root{
+    --ink:#15201c;
+    --ink-soft:#41504a;
+    --paper:#faf8f4;
+    --paper-2:#f1ede4;
+    --line:#e4ded2;
+    --green:#0f6b52;
+    --green-deep:#0a3d2e;
+    --green-darker:#072b21;
+    --mint:#8fd3bd;
+    --sand:#d9a441;
+    --white:#ffffff;
+    --radius:16px;
+    --maxw:1120px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;font-size:17.5px}
+  h1,h2,h3{font-family:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,"Times New Roman",serif;line-height:1.1;letter-spacing:-0.01em;font-weight:600}
+  a{color:inherit}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .em{font-style:italic;color:var(--sand)}
+
+  /* ===== NAV (sits on dark hero) ===== */
+  header.nav{position:sticky;top:0;z-index:30;background:rgba(7,43,33,0.85);backdrop-filter:saturate(160%) blur(12px);border-bottom:1px solid rgba(255,255,255,0.08)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-weight:600;font-size:22px;color:#f2efe6}
+  .brand .dot{color:var(--sand)}
+  .nav-links{display:flex;gap:24px;align-items:center;font-size:15px;color:#cfe0d8}
+  .nav-links a{text-decoration:none}
+  .nav-links a:hover{color:#fff}
+  .btn{display:inline-block;background:var(--sand);color:#241a05;padding:14px 26px;border-radius:999px;text-decoration:none;font-weight:700;font-size:16px;transition:transform .15s ease,filter .15s ease;white-space:nowrap}
+  .btn:hover{filter:brightness(1.06);transform:translateY(-1px)}
+  .btn.green{background:var(--green);color:#fff}
+  .btn.green:hover{background:var(--green-deep)}
+  .btn.ghost-dark{background:transparent;color:#e8f1ec;border:1px solid rgba(255,255,255,0.35);font-weight:600}
+  .btn.ghost-dark:hover{background:rgba(255,255,255,0.08)}
+  .btn.ghost-light{background:transparent;color:var(--ink);border:1px solid var(--line);font-weight:600}
+  .btn.ghost-light:hover{background:var(--paper-2)}
+  .nav .btn{padding:10px 20px;font-size:14.5px}
+
+  /* ===== HERO ===== */
+  .hero{background:radial-gradient(1100px 600px at 85% -10%, rgba(143,211,189,0.16), transparent 60%),radial-gradient(800px 500px at -10% 110%, rgba(217,164,65,0.12), transparent 55%),linear-gradient(160deg, var(--green-darker) 0%, var(--green-deep) 55%, #0c4735 100%);color:#eef5f1;position:relative;overflow:hidden}
+  .hero:before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px);background-size:26px 26px;pointer-events:none}
+  .hero-inner{display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;padding:88px 0 96px;position:relative}
+  .eyebrow{display:inline-block;font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--mint);background:rgba(143,211,189,0.12);border:1px solid rgba(143,211,189,0.3);padding:7px 14px;border-radius:999px;margin-bottom:26px}
+  .hero h1{font-size:clamp(38px,5.2vw,58px);color:#fdfcf8;margin-bottom:22px;max-width:15ch}
+  .hero p.lead{font-size:clamp(18px,2vw,20.5px);color:#c8dcd2;max-width:48ch;margin-bottom:32px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+  .cta-sub{font-size:14.5px;color:#a9c6b9;margin-top:16px;max-width:44ch}
+  .cta-sub strong{color:#e8f1ec}
+
+  /* dashboard mockup */
+  .mock{position:relative;filter:drop-shadow(0 30px 60px rgba(0,0,0,0.35));transform:rotate(1.2deg)}
+  .mock-frame{background:#fdfcf9;border-radius:18px;overflow:hidden;border:1px solid rgba(0,0,0,0.08)}
+  .mock-bar{display:flex;align-items:center;gap:6px;background:#ece7db;padding:11px 16px}
+  .mock-bar span{width:10px;height:10px;border-radius:50%}
+  .mock-bar span:nth-child(1){background:#e0654f}.mock-bar span:nth-child(2){background:#e5b953}.mock-bar span:nth-child(3){background:#69b98a}
+  .mock-bar .url{margin-left:10px;flex:1;background:#faf8f2;border-radius:7px;font-size:11.5px;color:#8d8574;padding:4px 12px}
+  .mock-head{display:flex;justify-content:space-between;align-items:center;padding:16px 20px 6px;color:var(--ink)}
+  .mock-head .t{font-weight:700;font-size:15px}
+  .chip{font-size:10.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:#f3ead6;color:#9a7616;border-radius:999px;padding:4px 10px}
+  .mock-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;padding:10px 20px 4px}
+  .ms{background:#f6f3ec;border-radius:12px;padding:12px 14px}
+  .ms .n{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:22px;font-weight:600;color:var(--green-deep)}
+  .ms .l{font-size:11px;color:#71685a;line-height:1.35}
+  .mock-chart{padding:12px 20px 6px}
+  .mock-chart .cl{font-size:11.5px;color:#71685a;margin-bottom:6px}
+  .bars{display:flex;align-items:flex-end;gap:7px;height:64px}
+  .bars i{flex:1;background:linear-gradient(180deg,#2c8a6d,#0f6b52);border-radius:4px 4px 0 0;opacity:0.9}
+  .mock-rows{padding:8px 20px 18px}
+  .mr{display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #efeadf;font-size:13px;color:var(--ink)}
+  .mr:last-child{border-bottom:none}
+  .mr .tag{font-size:10.5px;font-weight:700;border-radius:999px;padding:3px 9px}
+  .tag.ok{background:#e2f2ea;color:#0f6b52}
+  .tag.att{background:#fbeedd;color:#b4540a}
+
+  /* ===== STATS BAND ===== */
+  .stats{background:var(--paper);border-bottom:1px solid var(--line)}
+  .stats-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;padding:40px 0;text-align:center}
+  .stat .n{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:clamp(28px,3.4vw,40px);font-weight:600;color:var(--green-deep)}
+  .stat .n em{font-style:normal;color:var(--sand)}
+  .stat .l{font-size:13.5px;color:var(--ink-soft);margin-top:2px}
+
+  /* ===== SECTIONS ===== */
+  section{padding:78px 0}
+  .kicker{font-size:13px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+  h2.section-title{font-size:clamp(28px,3.8vw,40px);max-width:24ch;margin-bottom:16px}
+  .section-intro{color:var(--ink-soft);max-width:56ch;font-size:18px}
+  .band{background:var(--white);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+  .icon{width:26px;height:26px;stroke:var(--green);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}
+  .icon-wrap{width:48px;height:48px;border-radius:13px;background:#e9f2ed;display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+
+  .pains{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:42px}
+  .pain{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px}
+  .pain h3{font-size:17.5px;font-family:-apple-system,"Segoe UI",Roboto,sans-serif;font-weight:700;margin-bottom:7px}
+  .pain p{color:var(--ink-soft);font-size:15px}
+
+  .core-card{background:linear-gradient(150deg,var(--green-darker),var(--green-deep));color:#e8f1ec;border-radius:var(--radius);padding:38px 36px;margin-top:44px}
+  .core-tag{display:inline-block;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;background:var(--sand);color:#241a05;padding:5px 12px;border-radius:999px;margin-bottom:16px}
+  .core-card h3{color:#fdfcf8;font-size:26px;margin-bottom:12px}
+  .core-card p{color:#c8dcd2;font-size:16.5px;max-width:70ch;margin-bottom:12px}
+  .core-card p.core-proof{color:#fdfcf8;font-weight:600;border-left:3px solid var(--sand);padding-left:16px;margin-bottom:0}
+  .build-tag{display:inline-block;font-size:11.5px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;background:var(--paper-2);color:#8a7a4e;padding:4px 11px;border-radius:999px;margin-bottom:10px}
+  .grid.addons{margin-top:22px}
+  .supporting-line{margin-top:24px;color:var(--ink-soft);font-size:15.5px;max-width:70ch}
+  .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:44px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:28px;transition:box-shadow .2s ease,transform .2s ease}
+  .card:hover{box-shadow:0 14px 36px rgba(15,32,28,0.08);transform:translateY(-2px)}
+  .card h3{font-size:21px;margin-bottom:9px}
+  .card p{color:var(--ink-soft);font-size:16px}
+
+  .steps{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px;position:relative}
+  .steps:before{content:"";position:absolute;top:26px;left:12%;right:12%;border-top:2px dashed #cdddd4;z-index:0}
+  .step{position:relative;z-index:1;text-align:center;padding:0 10px}
+  .step .n{width:52px;height:52px;border-radius:50%;background:var(--green);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:22px;font-weight:600;margin:0 auto 18px;border:5px solid var(--white)}
+  .step h3{font-size:19.5px;margin-bottom:8px}
+  .step p{color:var(--ink-soft);font-size:15.5px}
+  .rule-line{margin:40px auto 0;background:#e9f2ed;border:1px solid #cfe4da;border-radius:12px;padding:16px 22px;font-size:16.5px;color:var(--green-deep);font-weight:600;max-width:660px;text-align:center}
+
+  /* comparison table */
+  .compare{overflow-x:auto;margin-top:44px}
+  table{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;font-size:15.5px}
+  th,td{padding:15px 18px;text-align:left;border-bottom:1px solid var(--paper-2)}
+  thead th{background:var(--green-deep);color:#eef5f1;font-size:14.5px;font-weight:700}
+  thead th:first-child{background:var(--green-darker)}
+  tbody tr:last-child td{border-bottom:none}
+  td:first-child{font-weight:600;color:var(--ink);background:var(--paper);width:24%}
+  td.hd{background:#f3faf6;font-weight:600;color:var(--green-deep)}
+  td .no{color:#a05c22}
+  .foot-note{font-size:13.5px;color:var(--ink-soft);margin-top:14px}
+
+  /* proof band */
+  .proof-band{background:linear-gradient(150deg,var(--green-darker),var(--green-deep));color:#e8f1ec;border-radius:22px;padding:52px 48px;position:relative;overflow:hidden}
+  .proof-band:before{content:"";position:absolute;right:-70px;top:-70px;width:260px;height:260px;border-radius:50%;background:rgba(217,164,65,0.1)}
+  .proof-band .kicker{color:var(--mint)}
+  .proof-band h2{color:#fdfcf8;font-size:clamp(24px,3.2vw,34px);max-width:26ch;margin-bottom:16px}
+  .proof-band p{color:#c8dcd2;max-width:62ch;font-size:17px;margin-bottom:14px}
+  .proof-band p strong{color:#fdfcf8}
+  .founder-line{display:flex;align-items:center;gap:14px;margin-top:26px}
+  .founder-line .av{width:52px;height:52px;border-radius:50%;background:var(--sand);color:#241a05;display:flex;align-items:center;justify-content:center;font-family:"Iowan Old Style",Palatino,Georgia,serif;font-weight:700;font-size:19px}
+  .founder-line .fl-t{font-size:14.5px;color:#c8dcd2}
+  .founder-line .fl-t strong{color:#fdfcf8;display:block;font-size:15.5px}
+
+  /* pricing */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:48px}
+  .plan{background:var(--white);border:1px solid var(--line);border-radius:var(--radius);padding:30px 26px;display:flex;flex-direction:column}
+  .plan.reco{border:2px solid var(--green);position:relative;box-shadow:0 18px 44px rgba(15,32,28,0.1)}
+  .plan .tagline{position:absolute;top:-13px;left:24px;background:var(--green);color:#fff;font-size:12px;font-weight:700;letter-spacing:0.05em;text-transform:uppercase;padding:5px 12px;border-radius:999px}
+  .plan h3{font-size:20px;margin-bottom:4px}
+  .plan .price{font-family:"Iowan Old Style",Palatino,Georgia,serif;font-size:29px;font-weight:600;margin:10px 0 2px}
+  .plan .per{font-size:14px;color:var(--ink-soft);margin-bottom:16px}
+  .plan ul{list-style:none;margin:0 0 22px;flex:1}
+  .plan li{padding:8px 0 8px 26px;font-size:15px;color:var(--ink-soft);border-bottom:1px solid var(--paper-2);position:relative}
+  .plan li:before{content:"";position:absolute;left:0;top:13px;width:15px;height:15px;background:var(--green);border-radius:50%;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/contain no-repeat}
+  .plan li:last-child{border-bottom:none}
+  .plan .btn{text-align:center}
+  .fee-note{margin-top:30px;color:var(--ink-soft);font-size:16px;max-width:62ch}
+  .fee-note strong{color:var(--ink)}
+
+  /* faq */
+  .faq{max-width:780px;margin-top:40px}
+  details{background:var(--white);border:1px solid var(--line);border-radius:12px;margin-bottom:12px;overflow:hidden}
+  summary{cursor:pointer;padding:18px 22px;font-weight:700;font-size:16.5px;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:14px}
+  summary::-webkit-details-marker{display:none}
+  summary:after{content:"+";font-size:22px;color:var(--green);font-weight:400;flex:0 0 auto}
+  details[open] summary:after{content:"\2212"}
+  details .a{padding:0 22px 18px;color:var(--ink-soft);font-size:15.5px}
+
+  /* final */
+  .final{background:linear-gradient(160deg,var(--green-darker),var(--green-deep));color:#e8f1ec;text-align:center;padding:92px 0}
+  .final h2{color:#fdfcf8;font-size:clamp(30px,4.2vw,44px);max-width:22ch;margin:0 auto 18px}
+  .final p{color:#c8dcd2;max-width:52ch;margin:0 auto 32px;font-size:18px}
+  .mailline{margin-top:20px;font-size:15.5px;color:#a9c6b9}
+  .mailline a{color:var(--mint);font-weight:600;text-decoration:none}
+  .mailline a:hover{text-decoration:underline}
+
+  footer{border-top:1px solid var(--line);padding:34px 0;color:var(--ink-soft);font-size:14.5px;background:var(--paper)}
+  .foot-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+  .foot-inner .brand{font-size:19px;color:var(--ink)}
+  .foot-inner .brand .dot{color:var(--sand)}
+
+  @media (max-width:900px){
+    body{font-size:17px}
+    .hero-inner{grid-template-columns:1fr;padding:56px 0 64px}
+    .mock{transform:none;max-width:520px}
+    .stats-inner{grid-template-columns:repeat(2,1fr);padding:32px 0}
+    section{padding:56px 0}
+    .pains{grid-template-columns:repeat(2,1fr)}
+    .grid,.steps,.plans{grid-template-columns:1fr}
+    .steps:before{display:none}
+    .proof-band{padding:36px 26px}
+    .nav-links{display:none}
+  }
+  @media (max-width:560px){
+    .pains{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="wrap nav-inner">
+    <div class="brand">Handomo<span class="dot">.</span></div>
+    <nav class="nav-links">
+      <a href="#services">What we handle</a>
+      <a href="#compare">Compare</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn" href="#pricing">Start free</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="wrap hero-inner">
+      <div>
+        <span class="eyebrow">Done for you admin automation</span>
+        <h1>Your business leaks money every week. <span class="em">We stop the leaks.</span></h1>
+        <p class="lead">Missed bookings nobody rebooks. Invoices that age quietly. Messages that go cold. Handomo runs the reminders, follow ups and chasing that bring that money back. Automation does the heavy lifting and a person checks everything before it goes out.</p>
+        <div class="hero-cta">
+          <a class="btn" href="mailto:handomo@handomo.com?subject=Free%20trial%20run&body=Hi%20Handomo%2C%0A%0AThe%20admin%20job%20that%20eats%20the%20most%20of%20my%20week%20is%3A%0A%0A">Start with a free trial run</a>
+          <a class="btn ghost-dark" href="#pricing">See pricing</a>
+        </div>
+        <p class="cta-sub"><strong>The free trial run:</strong> pick one job and we run it free on one past month, from a simple export. You keep whatever it finds, and you judge the output before paying anything.</p>
+      </div>
+      <div class="mock" aria-hidden="true">
+        <div class="mock-frame">
+          <div class="mock-bar"><span></span><span></span><span></span><div class="url">handomo · your weekly report</div></div>
+          <div class="mock-head"><span class="t">This week at your business</span><span class="chip">Sample data</span></div>
+          <div class="mock-stats">
+            <div class="ms"><div class="n">26</div><div class="l">booking reminders sent</div></div>
+            <div class="ms"><div class="n">14</div><div class="l">replies drafted for your approval</div></div>
+            <div class="ms"><div class="n">9</div><div class="l">invoices chased</div></div>
+          </div>
+          <div class="mock-chart">
+            <div class="cl">Leaks caught per week</div>
+            <div class="bars"><i style="height:36%"></i><i style="height:48%"></i><i style="height:42%"></i><i style="height:61%"></i><i style="height:55%"></i><i style="height:72%"></i><i style="height:80%"></i></div>
+          </div>
+          <div class="mock-rows">
+            <div class="mr"><span>Cancelled slot offered to the waitlist</span><span class="tag ok">Done</span></div>
+            <div class="mr"><span>Two payments still unconfirmed</span><span class="tag att">For you</span></div>
+            <div class="mr"><span>Overdue invoice follow up drafted</span><span class="tag ok">Done</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STATS BAND -->
+  <div class="stats">
+    <div class="wrap stats-inner">
+      <div class="stat"><div class="n">140</div><div class="l">customer accounts checked in one real run</div></div>
+      <div class="stat"><div class="n">432</div><div class="l">invoice lines matched line by line</div></div>
+      <div class="stat"><div class="n"><em>9</em></div><div class="l">paid invoices caught that were still owed</div></div>
+      <div class="stat"><div class="n">0</div><div class="l">build or setup fees, ever</div></div>
+    </div>
+  </div>
+
+  <!-- PAINS -->
+  <section>
+    <div class="wrap">
+      <div class="kicker">Where the money goes</div>
+      <h2 class="section-title">The quiet leaks every owner knows about.</h2>
+      <p class="section-intro">None of these feel dramatic on the day. Added up over a month, they are real money. And plugging them is exactly the kind of repetitive, persistent work nobody in a busy business has time to do.</p>
+      <div class="pains">
+        <div class="pain">
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M3 21l1.5-5.5A8 8 0 1 1 8.5 19L3 21z"/><path d="M8 10h8M8 13.5h5"/></svg></div>
+          <h3>Real estate</h3>
+          <p>A lead that messages in the evening and hears nothing until late morning has usually already found another agent.</p>
+        </div>
+        <div class="pain">
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18M9.5 14.5h5M12 12v5"/></svg></div>
+          <h3>Clinics</h3>
+          <p>Every no show is paid staff and an empty chair. Most are recoverable with the right reminder and a fast rebooking offer.</p>
+        </div>
+        <div class="pain">
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M6.5 6.5h11v11h-11z"/><path d="M2 9.5v5M22 9.5v5M4.25 8v8M19.75 8v8"/></svg></div>
+          <h3>Gyms and studios</h3>
+          <p>Memberships quietly lapse because nobody chased the renewal the week it mattered. That is recurring revenue walking away.</p>
+        </div>
+        <div class="pain">
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><path d="M3 11h18M5 11l1.2 9h11.6L19 11M12 11V7a3 3 0 0 1 3-3"/></svg></div>
+          <h3>Cafes and restaurants</h3>
+          <p>Platform refunds, disputed orders and commission charges nobody has time to question after a full day of service.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="band">
+    <div class="wrap">
+      <div class="kicker">What we handle</div>
+      <h2 class="section-title">One proven core. Add ons built to order.</h2>
+      <p class="section-intro">We lead with the one job we can already prove, and we build the rest around it. Start with one job. Add another when it has earned its place.</p>
+
+      <div class="core-card">
+        <div class="core-tag">The core service, proven</div>
+        <h3>Checks and reviews</h3>
+        <p>A weekly cross check that the money coming in matches what your systems say. Bookings against payments, invoices against statements, payouts against what actually landed. It surfaces the quiet gaps: a payment marked received that the bank never saw, a class marked paid in a portal that never cleared. Only the exceptions reach you.</p>
+        <p class="core-proof">In one real run across 140 customer accounts and 432 invoice lines, it caught 9 invoices the books had marked paid that a customer statement still showed owing.</p>
+      </div>
+
+      <div class="grid addons">
+        <div class="card">
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+          <span class="build-tag">We build this for you</span>
+          <h3>Get paid faster</h3>
+          <p>For businesses that sell on credit or terms. A weekly agent tracks what was invoiced against what actually landed, flags what is overdue, and drafts the chase messages in your tone for your approval. Cash in the door sooner.</p>
+        </div>
+        <div class="card">
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 2v4M16 2v4M3 9h18M9.5 14.5h5M12 12v5"/></svg></div>
+          <span class="build-tag">We build this for you</span>
+          <h3>Fill the empty chairs</h3>
+          <p>For appointment based businesses. Reminders before the visit, a waitlist offer the moment someone cancels, one tap rebooking, and deposit prompts for repeat no show risks. Fewer empty slots, on whatever channels you already use.</p>
+        </div>
+      </div>
+      <p class="supporting-line">Also available alongside any of the above: inbox and message triage with drafted replies, and a short weekly briefing on where the business stands.</p>
+    </section>
+
+  <!-- HOW IT WORKS -->
+  <section>
+    <div class="wrap">
+      <div class="kicker">How it works</div>
+      <h2 class="section-title">Simple to start, and you stay in control.</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="n">1</div>
+          <h3>Pick one job</h3>
+          <p>We start with the single task that eats the most of your week. No platform to learn, no setup project.</p>
+        </div>
+        <div class="step">
+          <div class="n">2</div>
+          <h3>We build it around you</h3>
+          <p>The system is shaped to how your business already works. You change nothing about how you operate.</p>
+        </div>
+        <div class="step">
+          <div class="n">3</div>
+          <h3>A person checks every output</h3>
+          <p>Automation does the repetitive work fast. Our review comes before anything reaches you or your customers.</p>
+        </div>
+      </div>
+      <div class="rule-line">Nothing is sent or trusted until a person has checked it. That is a standing rule, not a feature.</div>
+    </div>
+  </section>
+
+  <!-- COMPARE -->
+  <section id="compare" class="band">
+    <div class="wrap">
+      <div class="kicker">The honest comparison</div>
+      <h2 class="section-title">Your three real options for the admin load.</h2>
+      <div class="compare">
+        <table>
+          <thead>
+            <tr><th></th><th>Handomo</th><th>Hiring an admin</th><th>Doing it yourself</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Monthly cost</td><td class="hd">AED 1,500 to 4,000</td><td>Salary plus benefits plus management time</td><td class="no">Free, except your evenings</td></tr>
+            <tr><td>Setup cost</td><td class="hd">Zero. No build fee</td><td>Recruitment, onboarding, training</td><td>None</td></tr>
+            <tr><td>Starts in</td><td class="hd">Days</td><td class="no">Weeks to months</td><td>Now, and it never ends</td></tr>
+            <tr><td>Sick days and turnover</td><td class="hd">None</td><td class="no">Real risk in a small team</td><td>Burnout is the turnover</td></tr>
+            <tr><td>Quality control</td><td class="hd">A person reviews every output</td><td>Depends who you hire</td><td>Depends how tired you are</td></tr>
+            <tr><td>Commitment</td><td class="hd">Cancel any month</td><td class="no">Notice periods and paperwork</td><td>Lifelong, apparently</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="foot-note">Fair note: a great admin hire does things automation should not touch. Handomo covers the repetitive load so the people in your business, including you, can do the rest.</p>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section>
+    <div class="wrap">
+      <div class="proof-band">
+        <div class="kicker">Born from real operations</div>
+        <h2>Built by operators, proven on a real business first.</h2>
+        <p>Handomo did not start as a pitch deck. Our first system was built for a working trading business, to do the checking that used to swallow whole afternoons. In one real run it cross checked <strong>140 customer accounts and 432 invoice lines</strong> and caught <strong>9 invoices the books had marked paid</strong> that a customer statement still showed owing. It is in active use and still being sharpened.</p>
+        <p><strong>We are a young company and we will not pretend otherwise.</strong> You will not find a wall of logos here, and we will not invent one. What you get instead is an offer that costs nothing to test: we run one job free on one past month, and the output speaks for itself.</p>
+        <div class="founder-line">
+          <div class="av">H</div>
+          <div class="fl-t"><strong>Operators first, automators second</strong>Our roots are more than a decade of running the admin of real businesses before automating it</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section id="pricing" class="band">
+    <div class="wrap">
+      <div class="kicker">Pricing, in the open</div>
+      <h2 class="section-title">Three steps. Each one earns the next.</h2>
+      <p class="section-intro">No quote theatre and no discovery call required to learn a price. This is what it costs.</p>
+      <div class="plans">
+        <div class="plan reco">
+          <span class="tagline">Start here</span>
+          <h3>Free trial run</h3>
+          <div class="price">AED 0</div>
+          <div class="per">one job, one past month</div>
+          <ul>
+            <li>Pick any admin job on our list</li>
+            <li>We run it on one past month of your data</li>
+            <li>Works from a simple export. Nothing sensitive leaves your side</li>
+            <li>You keep the output either way, no strings</li>
+          </ul>
+          <a class="btn green" href="mailto:handomo@handomo.com?subject=Free%20trial%20run&body=Hi%20Handomo%2C%0A%0AThe%20admin%20job%20that%20eats%20the%20most%20of%20my%20week%20is%3A%0A%0A">Claim the free trial run</a>
+        </div>
+        <div class="plan">
+          <h3>Pilot</h3>
+          <div class="price">AED 500 to 1,000</div>
+          <div class="per">one time, fixed price · about USD 140 to 270</div>
+          <ul>
+            <li>One job, agreed scope, run for real</li>
+            <li>Human review on every output</li>
+            <li>Price fixed before we start</li>
+            <li>No obligation to continue after</li>
+          </ul>
+          <a class="btn ghost-light" href="mailto:handomo@handomo.com?subject=Pilot%20question">Ask about a pilot</a>
+        </div>
+        <div class="plan">
+          <h3>Retainer</h3>
+          <div class="price">AED 1,500 to 4,000</div>
+          <div class="per">per month, by job and volume · about USD 410 to 1,090</div>
+          <ul>
+            <li>Your chosen jobs handled every week</li>
+            <li>No build fee, ever</li>
+            <li>Cancel any month, no notice period games</li>
+            <li>Add or drop jobs as your needs change</li>
+          </ul>
+          <a class="btn ghost-light" href="mailto:handomo@handomo.com?subject=Retainer%20question">Ask about a retainer</a>
+        </div>
+      </div>
+      <p class="fee-note"><strong>Why is there no big setup fee?</strong> Typical automation agencies charge thousands upfront before anything runs. Handomo charges nothing to build, because the monthly fee only survives if the work keeps proving useful. That keeps the pressure exactly where it belongs. On us.</p>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq">
+    <div class="wrap">
+      <div class="kicker">Fair questions</div>
+      <h2 class="section-title">The things owners actually ask.</h2>
+      <div class="faq">
+        <details>
+          <summary>What happens to my data?</summary>
+          <div class="a">The free trial run works from a simple export you send, so nothing connects to your systems at all. For ongoing work, access is limited to the one job we agree, and your data is never shared with third parties or used for anything except your own reports.</div>
+        </details>
+        <details>
+          <summary>What if it makes a mistake?</summary>
+          <div class="a">Every output is checked by a person before it reaches you, and our reports flag items for your decision rather than acting on their own. Nothing is sent to your customers or suppliers without your approval. The system points, you decide.</div>
+        </details>
+        <details>
+          <summary>Am I locked into anything?</summary>
+          <div class="a">No. The trial run is free. The pilot is a one time fixed price. The retainer is monthly and you can cancel any month. There is no build fee to recover, so there is no lock in logic anywhere.</div>
+        </details>
+        <details>
+          <summary>Who actually does the work?</summary>
+          <div class="a">Automation and people, in a fixed order. The systems do the repetitive sorting, drafting and checking because they are fast and do not get bored. A person reviews the output, handles judgment calls and answers your questions. You always have a human on the other end, and we reply within one working day.</div>
+        </details>
+        <details>
+          <summary>Why is this cheaper than hiring an admin?</summary>
+          <div class="a">A full time hire costs a multiple of this once you count salary, benefits and management time. Handomo automates the repetitive part and applies human review where it matters, so you pay for outcomes on specific jobs instead of a full seat.</div>
+        </details>
+        <details>
+          <summary>Do I need to change my software?</summary>
+          <div class="a">No. We build around whatever you already use, spreadsheets included. If your current setup is messy, that is normal, and it is exactly the kind of mess this is built to handle.</div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <div class="final">
+    <div class="wrap">
+      <h2>Start with the free trial run.</h2>
+      <p>Pick the admin job you hate most. We run it free on one past month, you judge the output, and you keep it either way. If it does not speak for itself, you have lost nothing.</p>
+      <a class="btn" href="mailto:handomo@handomo.com?subject=Free%20trial%20run&body=Hi%20Handomo%2C%0A%0AThe%20admin%20job%20that%20eats%20the%20most%20of%20my%20week%20is%3A%0A%0A">Start with a free trial run</a>
+      <p class="mailline">Or just email <a href="mailto:handomo@handomo.com">handomo@handomo.com</a> and describe the job you hate most.</p>
+    </div>
+  </div>
+
+</main>
+
+<footer>
+  <div class="wrap foot-inner">
+    <div class="brand">Handomo<span class="dot">.</span></div>
+    <div>Done for you admin automation. handomo@handomo.com</div>
+  </div>
+</footer>
+
+</body>
+</html>
