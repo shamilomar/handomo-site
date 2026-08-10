@@ -191,9 +191,10 @@
   .foot-inner .brand .dot{color:var(--sand)}
 
   @media (max-width:900px){
+    html,body{overflow-x:hidden}
     body{font-size:17px}
-    .hero-inner{grid-template-columns:1fr;padding:56px 0 64px}
-    .mock{transform:none;max-width:520px}
+    .hero-inner{grid-template-columns:1fr;padding:52px 0 60px}
+    .mock{transform:none;max-width:480px;margin:0 auto}
     .stats-inner{grid-template-columns:repeat(2,1fr);padding:32px 0}
     section{padding:56px 0}
     .pains{grid-template-columns:repeat(2,1fr)}
@@ -203,7 +204,36 @@
     .nav-links{display:none}
   }
   @media (max-width:560px){
+    .wrap{padding:0 20px}
     .pains{grid-template-columns:1fr}
+    .stats-inner{grid-template-columns:repeat(2,1fr)}
+    /* hero: rein in the headline and tighten so it does not fill the whole screen */
+    .hero h1{font-size:33px;max-width:none;margin-bottom:18px}
+    .hero p.lead{font-size:16px;max-width:none}
+    .hero-inner{padding:34px 0 46px}
+    .eyebrow{margin-bottom:18px;font-size:11.5px;padding:6px 12px}
+    /* stack the two hero buttons full width for easy tapping */
+    .hero-cta{flex-direction:column;align-items:stretch;gap:12px}
+    .hero-cta .btn{width:100%;text-align:center;padding:15px 20px}
+    .cta-sub{font-size:14px}
+    /* nav */
+    .nav-inner{height:58px}
+    .nav .btn{padding:9px 15px;font-size:13.5px}
+    .brand{font-size:19px;gap:8px}
+    /* headings + section spacing */
+    h2.section-title{font-size:25px;max-width:none}
+    section{padding:46px 0}
+    .section-intro{font-size:16px}
+    /* cards / bands */
+    .core-card{padding:26px 20px}
+    .core-card h3{font-size:22px}
+    .core-card p{font-size:15.5px}
+    .proof-band{padding:28px 20px;border-radius:16px}
+    .proof-band h2{font-size:24px}
+    .plan{padding:26px 20px}
+    .rule-line{font-size:15px;padding:14px 18px}
+    .final{padding:60px 0}
+    th,td{padding:12px 12px;font-size:14px}
   }
 </style>
 </head>
