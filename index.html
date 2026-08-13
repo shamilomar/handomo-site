@@ -236,6 +236,25 @@
     th,td{padding:12px 12px;font-size:14px}
   }
 </style>
+  <!-- Sender.net embed loader (account 74b44bf6644001) -->
+  <script>
+    (function (s, e, n, d, er) {
+      s['Sender'] = er;
+      s[er] = s[er] || function () {
+        (s[er].q = s[er].q || []).push(arguments)
+      }, s[er].l = 1 * new Date();
+      s[er].on = function(event, callback) {
+        s[er].listeners = s[er].listeners || {};
+        (s[er].listeners[event] = s[er].listeners[event] || []).push(callback);
+      };
+      var a = e.createElement(n),
+          m = e.getElementsByTagName(n)[0];
+      a.async = 1;
+      a.src = d;
+      m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
+    sender('74b44bf6644001')
+  </script>
 </head>
 <body>
 
@@ -590,29 +609,12 @@
         <h2>Not ready to talk?<br>Start with the checklist.</h2>
         <p class="lead">Get the money leak checklist: 9 quiet places a business loses money, and how to catch each one. Then one short, useful note every week or two. No spam, unsubscribe any time.</p>
       </div>
-      <div class="capture-form" id="nl-box">
-        <form id="nl-form" method="POST" action="https://085586a5.sibforms.com/serve/MUIFAHpSCK6C4ot8DkWb04LdQO0SOGHIB4hMtpo6A1DyKIM_NOwh0Oa-z03k-soIHjLp8Ml744wLU6vKOcUQ993D6M7MXu0sEiARlMHx5BeI-8JENIsyb58jQZ6pe2_Vo9yuARzlP4dQj-UcLzzZFuHtY2tN1xQ28HkRATYJc3FasHQtXLkAzv56zfnjVS8IE-qZZAR7REHIZjKTEw==" target="nl_iframe" onsubmit="return handomoNLsubmit()">
-          <label for="EMAIL" class="sr-only">Email address</label>
-          <input type="email" id="EMAIL" name="EMAIL" required placeholder="you@yourbusiness.com" autocomplete="email">
-          <button type="submit" class="btn green">Send me the checklist</button>
-          <input type="text" name="email_address_check" value="" style="position:absolute;left:-9999px" tabindex="-1" autocomplete="off" aria-hidden="true">
-          <input type="hidden" name="locale" value="en">
-          <input type="hidden" name="html_type" value="simple">
-          <p class="fineprint">We will never share your email. One click to unsubscribe.</p>
-        </form>
-        <iframe name="nl_iframe" title="subscription" class="nl-iframe" aria-hidden="true" tabindex="-1" onload="handomoNLdone()"></iframe>
+      <div class="capture-embed">
+        <!-- Sender.net embedded form: Handomo checklist (form id bqx1E2) -->
+        <div style="text-align:left" class="sender-form-field" data-sender-form-id="bqx1E2"></div>
       </div>
     </div>
   </section>
-  <script>
-    var handomoNLok=false;
-    function handomoNLsubmit(){handomoNLok=true;return true;}
-    function handomoNLdone(){
-      if(!handomoNLok)return;
-      var box=document.getElementById('nl-box');
-      if(box){box.innerHTML='<div class="nl-done"><div class="nl-check">&#10003;</div><h3>You\'re in.</h3><p>Your money leak checklist is on its way to your inbox. If it\'s not there in a few minutes, take a quick look in spam.</p></div>';}
-    }
-  </script>
 
   <!-- FINAL CTA -->
   <div class="final">
